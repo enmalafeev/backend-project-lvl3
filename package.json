@@ -1,0 +1,44 @@
+{
+  "name": "backend-project-lvl3",
+  "version": "1.0.0",
+  "description": "![Actions Status](/workflows/hexlet-check/badge.svg)",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "pageloader": "bin/pageloader.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "test": "npx -n --experimental-vm-modules jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enmalafeev/backend-project-lvl3.git"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
+  },
+  "keywords": [],
+  "author": "Evgeny Malafeev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enmalafeev/backend-project-lvl3/issues"
+  },
+  "homepage": "https://github.com/enmalafeev/backend-project-lvl3#readme",
+  "dependencies": {
+    "debug": "^4.2.0",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@jest/globals": "^26.4.2",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.2",
+    "jest": "^26.4.2",
+    "jest-cli": "^26.4.2"
+  }
+}

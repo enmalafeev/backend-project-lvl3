@@ -4,3 +4,6 @@
 ![pageLoader](https://github.com/enmalafeev/backend-project-lvl3/workflows/pageloader_CI/badge.svg)
 
 ## Page loader
+
+### How to use it
+[![asciicast](https://asciinema.org/a/365827.svg)](https://asciinema.org/a/365827)

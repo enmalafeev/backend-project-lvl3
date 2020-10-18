@@ -10,5 +10,5 @@ programm
   .description('Download page per url, and save in current directory')
   .option('-o, --output [pathToDir]', 'Output directory', `${process.cwd()}`)
   .arguments('<url>')
-  .action((url, { output }) => console.log(pageloader(url, output)))
+  .action((url) => console.log(pageloader(url, programm.output)))
   .parse(process.argv);

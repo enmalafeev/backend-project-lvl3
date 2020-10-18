@@ -2,7 +2,7 @@ import axios from 'axios';
 import path from 'path';
 import { promises as fs } from 'fs';
 
-const loadData = (url, pathToDir) => {
+const pageloader = (url, pathToDir) => {
   const { hostname, pathname } = new URL(url);
   const urlString = `${hostname}${pathname}`;
   const regex = /\W/gm;
@@ -14,4 +14,4 @@ const loadData = (url, pathToDir) => {
     .catch((err) => console.error(err));
 };
 
-export default loadData;
+export default pageloader;

@@ -11,5 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Hexlet project check
+      - name: backend-project-lvl3
         uses: hexlet/project-action@release

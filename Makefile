@@ -1,7 +1,7 @@
 install: install-deps
 
 run:
-	node bin/pageloader.js https://ru.hexlet.io/courses
+	node bin/pageloader.js https://enmalafeev.github.io/portfolio/dist
 
 install-deps:
 	npm ci

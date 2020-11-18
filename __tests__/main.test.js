@@ -41,7 +41,9 @@ test('fetchData', async () => {
 test('fetchImages', async () => {
   nock('https://ru.hexlet.io')
     .get('/courses')
-    .reply(200, before);
+    .reply(200, before)
+    .get('/assets')
+    .reply(200, { data: [1, 2, 3] });
 
   await pageloader(url, tempDir);
   const files = await fs.readdir(tempDir);

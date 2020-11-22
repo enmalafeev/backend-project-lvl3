@@ -13,7 +13,7 @@ axios.defaults.adapter = httpAdapter;
 nock.disableNetConnect();
 
 const url = 'https://ru.hexlet.io/courses';
-const expected = '<!DOCTYPE html><html><head></head><body></body></html>';
+let expected;
 let tempDir;
 let before;
 let after;
@@ -23,6 +23,7 @@ beforeEach(async () => {
 });
 
 beforeAll(async () => {
+  expected = await fs.readFile(path.resolve('./__fixtures__', 'expected.html'), 'utf-8');
   before = await fs.readFile(path.resolve('./__fixtures__', 'before.html'), 'utf-8');
   after = await fs.readFile(path.resolve('./__fixtures__', 'after.html'), 'utf-8');
 });
@@ -40,10 +41,11 @@ test('fetchData', async () => {
 
 test('fetchImages', async () => {
   nock('https://ru.hexlet.io')
+    .persist()
     .get('/courses')
     .reply(200, before)
-    .get('/assets')
-    .reply(200, { data: [1, 2, 3] });
+    .get(/assets\/.*/i)
+    .reply(200, { data: [1, 2] });
 
   await pageloader(url, tempDir);
   const files = await fs.readdir(tempDir);
@@ -51,5 +53,5 @@ test('fetchImages', async () => {
   const resultDir = await fs.readdir(path.resolve(tempDir, files[1]), 'utf-8');
 
   expect(resultFile).toEqual(after);
-  expect(resultDir).toHaveLength(3);
+  expect(resultDir).toHaveLength(2);
 });

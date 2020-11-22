@@ -1,7 +1,8 @@
 install: install-deps
 
 run:
-	node bin/pageloader.js https://enmalafeev.github.io/portfolio/dist
+	node bin/pageloader.js  https://ru.hexlet.io/courses
+	# https://enmalafeev.github.io/portfolio/dist/
 
 install-deps:
 	npm ci
@@ -17,5 +18,4 @@ lint:
 
 publish:
 	npm publish --dry-run
-
 .PHONY: test

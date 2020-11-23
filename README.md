@@ -7,3 +7,6 @@
 
 ### How to use it
 [![asciicast](https://asciinema.org/a/365827.svg)](https://asciinema.org/a/365827)
+
+### Download images
+[![asciicast](https://asciinema.org/a/374739.svg)](https://asciinema.org/a/374739)

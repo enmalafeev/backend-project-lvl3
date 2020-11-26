@@ -14,11 +14,17 @@ export const getStringNameFromURL = (url, ending) => {
 };
 
 const parse = (data) => {
+  const mapping = {
+    img: 'src',
+    script: 'src',
+    link: 'href',
+  };
   const $ = cheerio.load(data);
-  const links = $('html').find('img').map(function () {
-    return $(this).attr('src');
-  }).get();
-  return links;
+  const links = [];
+  $(Object.keys(mapping)).each((i, tagName) => {
+    links[i] = $('html').find(tagName).map((j, el) => $(el).attr(mapping[tagName])).get();
+  });
+  return links.flat();
 };
 
 const updateHTML = (html, data) => {

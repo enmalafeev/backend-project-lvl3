@@ -22,7 +22,7 @@ const parse = (data) => {
   const $ = cheerio.load(data);
   const links = [];
   $(Object.keys(mapping)).each((i, tagName) => {
-    links[i] = $('html').find(tagName).map((j, el) => $(el).attr(mapping[tagName])).get();
+    links.push($('html').find(tagName).map((j, el) => $(el).attr(mapping[tagName])).get());
   });
   return links.flat();
 };
@@ -61,7 +61,10 @@ const pageloader = (url, pathToDir) => {
     .then((data) => fs.appendFile(path.resolve(pathToDir, outputFileName), data))
     .then(() => fs.mkdir(path.resolve(pathToDir, ouputDirName)))
     .then(() => downloadImages(links, url))
-    .then((imgPaths) => Promise.all(imgPaths.map((img) => fs.appendFile(path.resolve(pathToDir, ouputDirName, getStringNameFromURL(img.config.url, path.extname(img.config.url))), img.data))))
+    .then((imgPaths) => Promise.all(imgPaths.map((img) => {
+      const imgPath = getStringNameFromURL(img.config.url, path.extname(img.config.url));
+      return fs.appendFile(path.resolve(pathToDir, ouputDirName, imgPath), img.data);
+    })))
     .then(() => fs.readdir(path.resolve(pathToDir, ouputDirName)))
     .then((imgData) => {
       images = imgData.map((pathImg) => `${ouputDirName}/${pathImg}`);
